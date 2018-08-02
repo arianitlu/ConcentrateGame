@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Label ordering must match values -->
+    <array name="pref_tag_option_labels">
+        <item>@string/pref_tag_label_cat</item>
+        <item>@string/pref_tag_label_dog</item>
+        <item>@string/pref_tag_label_puppy</item>
+    </array>
+
+    <array name="pref_tag_option_values">
+        <item>@string/pref_tag_cat_value</item>
+        <item>@string/pref_tag_dog_value</item>
+        <item>@string/pref_tag_puppy_value</item>
+    </array>
+</resources>
