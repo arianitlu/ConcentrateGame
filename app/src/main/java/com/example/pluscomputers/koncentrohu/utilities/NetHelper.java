@@ -1,4 +1,4 @@
-package com.example.pluscomputers.koncentrohu;
+package com.example.pluscomputers.koncentrohu.utilities;
 
 
 import android.content.Context;

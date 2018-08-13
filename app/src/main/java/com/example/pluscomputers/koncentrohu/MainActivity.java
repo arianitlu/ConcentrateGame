@@ -18,6 +18,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.pluscomputers.koncentrohu.model.Photo;
+import com.example.pluscomputers.koncentrohu.utilities.NetHelper;
+import com.example.pluscomputers.koncentrohu.utilities.PhotoJsonUtils;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
@@ -25,6 +28,9 @@ import org.json.JSONObject;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener{
 
@@ -36,10 +42,21 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     // List of photos objects that we will take from API
     List<Photo> photos;
 
-    TextView playerOneTextView, playerTwoTextView;
+    @BindView(R.id.txt_player_one)TextView playerOneTextView;
+    @BindView(R.id.txt_player_two) TextView playerTwoTextView;
 
-    ImageView img_11, img_12, img_13, img_14, img_21, img_22, img_23,
-            img_24, img_31, img_32, img_33, img_34;
+    @BindView(R.id.img_11) ImageView img_11;
+    @BindView(R.id.img_12) ImageView img_12;
+    @BindView(R.id.img_13) ImageView img_13;
+    @BindView(R.id.img_14) ImageView img_14;
+    @BindView(R.id.img_21) ImageView img_21;
+    @BindView(R.id.img_22) ImageView img_22;
+    @BindView(R.id.img_23) ImageView img_23;
+    @BindView(R.id.img_24) ImageView img_24;
+    @BindView(R.id.img_31) ImageView img_31;
+    @BindView(R.id.img_32) ImageView img_32;
+    @BindView(R.id.img_33) ImageView img_33;
+    @BindView(R.id.img_34) ImageView img_34;
 
     ImageView[] imgViews;
 
@@ -66,27 +83,11 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         Intent intent = getIntent();
         singlePlayerMode = intent.getBooleanExtra("singlePlayer", false);
 
-        playerOneTextView = findViewById(R.id.txt_player_one);
-        playerTwoTextView = findViewById(R.id.txt_player_two);
+        ButterKnife.bind(this);
 
         if (singlePlayerMode) {
             playerTwoTextView.setVisibility(View.GONE);
         }
-
-        img_11 = findViewById(R.id.img_11);
-        img_12 = findViewById(R.id.img_12);
-        img_13 = findViewById(R.id.img_13);
-        img_14 = findViewById(R.id.img_14);
-
-        img_21 = findViewById(R.id.img_21);
-        img_22 = findViewById(R.id.img_22);
-        img_23 = findViewById(R.id.img_23);
-        img_24 = findViewById(R.id.img_24);
-
-        img_31 = findViewById(R.id.img_31);
-        img_32 = findViewById(R.id.img_32);
-        img_33 = findViewById(R.id.img_33);
-        img_34 = findViewById(R.id.img_34);
 
         img_11.setTag("0");
         img_12.setTag("1");
@@ -298,7 +299,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        photos = Utils.extractPhotos(response);
+                        photos = PhotoJsonUtils.extractPhotos(response);
                     }
                 }, new Response.ErrorListener() {
 

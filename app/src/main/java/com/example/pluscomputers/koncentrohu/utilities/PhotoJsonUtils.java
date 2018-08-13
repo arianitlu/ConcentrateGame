@@ -1,6 +1,6 @@
-package com.example.pluscomputers.koncentrohu;
+package com.example.pluscomputers.koncentrohu.utilities;
 
-import android.util.Log;
+import com.example.pluscomputers.koncentrohu.model.Photo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -9,9 +9,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class Utils {
+public final class PhotoJsonUtils {
 
-    private Utils() {
+    private PhotoJsonUtils() {
     }
 
     public static List<Photo> extractPhotos(JSONObject response) {

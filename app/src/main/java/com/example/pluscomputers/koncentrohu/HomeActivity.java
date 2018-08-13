@@ -6,14 +6,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class HomeActivity extends AppCompatActivity {
 
-    private Button btnSinglePlayer,btnMultiPlayer,btnSettings;
+    @BindView(R.id.btnSinglePlayer) Button btnSinglePlayer;
+    @BindView(R.id.btnMultiPlayer) Button btnMultiPlayer;
+    @BindView(R.id.btnSettings) Button btnSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        ButterKnife.bind(this);
 
         btnSinglePlayer = findViewById(R.id.btnSinglePlayer);
         btnMultiPlayer = findViewById(R.id.btnMultiPlayer);
